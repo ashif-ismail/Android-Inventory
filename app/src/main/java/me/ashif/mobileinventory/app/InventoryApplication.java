@@ -1,5 +1,6 @@
 package me.ashif.mobileinventory.app;
 
+import android.app.Activity;
 import android.app.Application;
 
 /**
@@ -10,4 +11,13 @@ import android.app.Application;
 
 public class InventoryApplication extends Application {
 
+    public static InventoryApplication get(Activity activity) {
+        return (InventoryApplication) activity.getApplication();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
 }
