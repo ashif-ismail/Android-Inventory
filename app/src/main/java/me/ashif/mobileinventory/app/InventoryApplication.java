@@ -9,4 +9,5 @@ import android.app.Application;
  */
 
 public class InventoryApplication extends Application {
+
 }
