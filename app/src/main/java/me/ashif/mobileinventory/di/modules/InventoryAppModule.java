@@ -34,7 +34,7 @@ public class InventoryAppModule {
 
     @Provides
     @PerApp
-    public Retrofit providesrRetrofit(OkHttpClient okHttpClient) {
+    public Retrofit providesRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
