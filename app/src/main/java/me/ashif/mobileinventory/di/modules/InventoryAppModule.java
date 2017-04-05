@@ -3,6 +3,9 @@ package me.ashif.mobileinventory.di.modules;
 import android.content.Context;
 import android.util.Log;
 
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
+
 import java.io.File;
 
 import dagger.Module;
@@ -25,6 +28,12 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @Module(includes = ContextModule.class)
 public class InventoryAppModule {
+
+    @Provides
+    @PerApp
+    public Bus providesBus(){
+        return new Bus(ThreadEnforcer.ANY);
+    }
 
     @Provides
     @PerApp

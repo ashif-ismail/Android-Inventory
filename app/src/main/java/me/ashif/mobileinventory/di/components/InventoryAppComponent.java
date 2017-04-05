@@ -1,5 +1,7 @@
 package me.ashif.mobileinventory.di.components;
 
+import com.squareup.otto.Bus;
+
 import dagger.Component;
 import me.ashif.mobileinventory.api.InventoryService;
 import me.ashif.mobileinventory.di.modules.InventoryAppModule;
@@ -14,4 +16,5 @@ import me.ashif.mobileinventory.di.scopes.PerApp;
 @PerApp
 public interface InventoryAppComponent {
     InventoryService getInventoryService();
+    Bus getOttoBus();
 }
