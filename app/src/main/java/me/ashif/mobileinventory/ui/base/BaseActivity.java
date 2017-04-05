@@ -1,4 +1,4 @@
-package me.ashif.mobileinventory;
+package me.ashif.mobileinventory.ui.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
