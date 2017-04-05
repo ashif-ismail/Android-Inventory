@@ -27,6 +27,7 @@ task clean(type: Delete) {
 }
 
 ext {
+    constraintlayout = '1.0.2'
     supportLibVersion = '25.3.0'
     daggerCompiler='2.0'
     dagger='2.5'
