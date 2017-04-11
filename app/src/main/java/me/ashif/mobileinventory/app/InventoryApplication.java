@@ -1,12 +1,8 @@
 package me.ashif.mobileinventory.app;
 
-import android.app.Activity;
 import android.app.Application;
 
-import me.ashif.mobileinventory.api.InventoryService;
-import me.ashif.mobileinventory.di.components.DaggerInventoryAppComponent;
-import me.ashif.mobileinventory.di.components.InventoryAppComponent;
-import me.ashif.mobileinventory.di.modules.ContextModule;
+import me.ashif.mobileinventory.di.dagger.DaggerInjectorImpl;
 
 /**
  * Created by Ashif on 5/4/17,April,2017
@@ -16,25 +12,20 @@ import me.ashif.mobileinventory.di.modules.ContextModule;
 
 public class InventoryApplication extends Application {
 
-    private InventoryService mInventoryService;
-    private InventoryAppComponent mComponent;
+    private static DaggerInjectorImpl sDaggerInjector;
 
-    public static InventoryApplication get(Activity activity) {
-        return (InventoryApplication) activity.getApplication();
+    public InventoryApplication() {
+        initDagger();
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        mComponent = DaggerInventoryAppComponent.builder()
-                .contextModule(new ContextModule(this))
-                .build();
-
-        mInventoryService = mComponent.getInventoryService();
+    public void initDagger() {
+        getDaggerInjector().init(this);
     }
 
-    public InventoryAppComponent component() {
-        return mComponent;
+    public DaggerInjectorImpl getDaggerInjector() {
+        if (sDaggerInjector == null) {
+            sDaggerInjector = new DaggerInjectorImpl();
+        }
+        return sDaggerInjector;
     }
 }
